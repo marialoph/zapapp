@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Tu Zapatería: Crear categorías</title>
+    <th:block th:replace="~{fragments/general.html :: headerfiles}"></th:block>
+</head>
+
+<div>
+    <div th:replace="~{fragments/general.html :: navigation}"> </div>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="text-center">Crear nueva categoría</h4>
+        </div>
+        <div class="card-body">
+            <form class="row" th:action="@{/categorias/add}" th:object="${categoria}" method="post">
+
+                <div class="mb-3">
+                    <label class="form-label" for="nombre">Nombre de la categoria:</label>
+                    <input class="form-control" name="nombre" required
+                        placeholder="Escribir el nombre de la nueva categoría" />
+                </div>
+                <div>
+                    <label class="form-label" for="padre">Seleccionar categoría padre 
+                        (Opción <i>'Sin padre':</i> Nueva categoría principal):</label>
+                    <select name="padre" class="form-select">
+                        <option value="">Sin padre</option>
+                        <option th:each="categoriaPadre: ${categorias}" th:value="${categoriaPadre.id}"
+                            th:text="${categoriaPadre.nombre}">
+                        </option>
+                    </select>
+                </div>
+                <div class="text-center mt-3">
+                    <button class="btn btn-success mt-3" type="submit">Crear categoría</button>&nbsp;
+                    <button class="btn btn-warning mt-3" type="reset">Reiniciar</button>
+                </div>
+            </form>
+            <!-- Botón de cancelar -->
+            <div class="text-center mt-1">
+                <a class="btn btn-danger mt-1" href="/" type="submit">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments/general.html :: footer}"></div>
+</div>
+</body>
+
+</html>

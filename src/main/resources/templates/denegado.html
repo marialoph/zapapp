@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Tu Zapatería: Acceso denegado</title>
+    <th:block th:replace="~{fragments/general.html :: headerfiles}"></th:block>
+</head>
+
+<body>
+    <div>
+        <div th:replace="~{fragments/general.html :: navigation}"> </div>
+    
+        <h4>Atención - Acceso denegado</h4>
+
+        <p>Su tipo de usuario no puede acceder a este contenido. Disculpe las molestias</p>
+        <p>Por favor, para acceder, identificarse con el tipo de usuario con los privilegios para acceder</p>
+
+        <p>Pulse <a href="/logout">aquí</a> para salir del sistema</p>
+        
+        <div th:replace="~{fragments/general.html :: footer}"> </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>Tu Zapatería: Lista Categorías</title>
+  <th:block th:replace="~{fragments/general.html :: headerfiles}"></th:block>
+</head>
+
+<body>
+
+  <div th:replace="~{fragments/general.html :: navigation}"> </div>
+
+  <div class="container">
+    <h3 class="h3 text-center">Listado de categorías de calzado</h3>
+    <table class="table table-striped table-hover w-100">
+      <thead>
+        <tr>
+          <th class="w-25">ID</th>
+          <th class="w-25">Nombre</th>
+          <th class="w-25">Padre</th>
+          <th class="w-25">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="categoria: ${categorias}">
+          <td th:text="${categoria.id}"></td>
+          <td th:text="${categoria.nombre}"></td>
+          <td th:text="${categoria.padre} != null ? ${categoria.padre.nombre} : 'Sin padre'"></td>
+          <td>
+            <a class="btn btn-warning" th:href="|/categorias/edit/${categoria.id}|">Modificar</a>&nbsp;
+            <a class="btn btn-danger" th:href="@{/categorias/delete/}+${categoria.id}">Borrar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div th:replace="~{fragments/general.html :: footer}">
+  </div>
+</body>
+
+</html>

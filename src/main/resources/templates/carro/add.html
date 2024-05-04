@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Tu Zapatería: Añada productos a la cesta</title>
+    <th:block th:replace="~{fragments/general.html :: headerfiles}"></th:block>
+</head>
+
+<body>
+
+    <div th:replace="~{fragments/general.html :: navigation}"></div>
+
+    <div class="container">
+        <h3 class="h3 text-center">ZapAPP - Añadir producto a la cesta</h3>
+        <form method="POST" th:action="|/carro/add/${producto.id}|">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th><td th:text="${producto.id}"></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>nombre</th><td th:text="${producto.nombre}"></td>
+                    <th>descripcion</th><td th:text="${producto.descripcion}"></td>
+                    <th>precio</th><td th:text="${producto.precio}"></td>
+
+                </tr>
+                <td>
+                    <button type="submit" class="btn btn-primary" th:href="|/carro/add/${producto.id}"></button>
+                </td>
+            </tbody>
+        </table>
+        </form>
+        <p>
+            <a class="btn btn-primary" href="/carro"></a>
+        </p>
+    </div>
+
+    <div th:replace="~{fragments/general.html :: footer}"></div>
+</body>
+
+</html>

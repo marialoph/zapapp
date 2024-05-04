@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Tu Zapatería: Crear productos</title>
+    <th:block th:replace="~{fragments/general.html :: headerfiles}"></th:block>
+</head>
+
+<body>
+    <div>
+        <div th:replace="~{fragments/general.html :: navigation}"> </div>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-center">Crear nuevo producto</h4>
+            </div>
+            <div class="card-body">
+                <form class="row" th:action="@{/productos/add}" th:object="${producto}" method="post">
+
+                    <div class="mb-3">
+                        <label class="form-label" for="nombre"><b>Nombre del producto:</b></label>
+                        <input class="form-control" th:field="*{nombre}" required
+                            placeholder="Escribir el nombre del nuevo producto" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="descripcion"><b>Descripción del producto:</b></label>
+                        <input class="form-control" th:field="*{descripcion}" placeholder="Escribir una breve 
+                        descripción del nuevo producto (características, material, tipo de cliente, etc.)" 
+                        required />
+                    </div>
+                    <div class="col-9">
+                        <label class="form-label" for="categoria"><b>Seleccionar la categoría del producto
+                            </b><i>(Mantener 'Sin padre' si no tiene categoría específica):</i></label>
+                        <select th:field="*{categoria}" class="form-select">
+                            <option value="">Sin padre</option>
+                            <option th:each="categoria: ${categorias}" th:value="${categoria.id}"
+                                th:text="${categoria.nombre}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <label class="form-label" for="precio"><b>Precio del producto:</b></label>
+                        <input type="number" class="form-control" th:field="*{precio}"
+                            placeholder="Señalar el precio por unidad" required min="1" max="999"/>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-success mt-3" type="submit">Crear producto</button>
+                        &nbsp;
+                        <button class="btn btn-warning mt-3" type="reset">Reiniciar</button>
+                    </div>
+                </form>
+                <!-- Botón de cancelar -->
+                <div class="text-center mt-1">
+                    <a class="btn btn-danger mt-1" href="/" type="submit">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{fragments/general.html :: footer}"></div>
+    </div>
+</body>
+
+</html>

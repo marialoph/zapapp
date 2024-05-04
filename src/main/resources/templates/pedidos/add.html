@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>Tu Zapatería: Gestión pedidos</title>
+  <th:block th:replace="~{fragments/general.html :: headerfiles}"></th:block>
+</head>
+
+<body>
+    <div th:replace="~{fragments/general.html :: navigation}"> </div>
+    <div class="container m-3">
+        <form class="row"
+            th:action="@{/pedidos/add}"
+            th:object="${pedido}"
+            method="post">
+
+            <div class="mb-3">
+                <label class="form-label" for="nombre">Nombre del pedido:</label>
+                <input class="form-control" name="nombre" placeholder="Escriba aquí el nombre"/>
+            </div>
+            <div>
+                <label class="form-label" for="padre">Seleccione el pedido:</label>
+                <select name="padre" class="form-select">
+                    <option value="">Sin padre</option>
+                    <option 
+                        th:each="pedido: ${pedidos}"
+                        th:value="${pedido.id}"
+                        th:text="${pedido.nombre}">                        
+                    </option>
+                </select>
+            </div>
+            <div>
+                <button class="btn btn-success mt-3" type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <div th:replace="~{fragments/general.html :: footer}"></div>
+</div>
+</body>
+
+</html>

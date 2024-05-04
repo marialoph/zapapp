@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>Tu Zapatería: Editar productos</title>
+  <th:block th:replace="~{fragments/general.html :: headerfiles}"></th:block>
+</head>
+
+<body>
+    <div th:replace="~{fragments/general.html :: navigation}"> </div>
+    <div class="container m-3">
+        <form class="row"
+            th:action="@{/productos/add}"
+            th:object="${producto}"
+            method="post">
+            <input type="number" name="id" hidden th:value="${producto.id}" />
+            <div class="mb-3">
+                <label class="form-label" for="nombre">Nombre del producto:</label>
+                <input class="form-control" name="nombre" 
+                    th:value="${producto.nombre}" />
+            </div>
+            
+            <div>
+                <button class="btn btn-success mt-3" type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <div th:replace="~{fragments/general.html :: footer}"></div>
+</div>
+</body>
+
+</html>

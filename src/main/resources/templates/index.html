@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio ZapAPP</title>
+    <th:block th:replace="~{fragments/general.html :: headerfiles}"></th:block>
+</head>
+<body>
+    <div class="container-fluid">
+        <div th:replace="~{fragments/general.html :: navigation}"> </div>
+        
+        <div class="container d-flex justify-content-center align-items-center" style="height: auto;">
+            <div class="card m-4 text-center" style="width: 18rem;">
+                <img src="img/zapateria.jpg" class="card-img-top" alt="ZapApp">
+                <div class="card-body">
+                    <h5 class="card-title">ZapAPP</h5>
+                    <p class="card-text">¡Bienvenida/o a tu Zapatería Virtual favorita!</p>
+                    <a sec:authorize="isAnonymous()" href="/login" class="btn btn-primary">ENTRAR</a>
+                </div>
+            </div>
+        </div>
+        <div th:replace="~{fragments/general.html :: footer}"></div>
+    </div>
+</body>
+
+</html>

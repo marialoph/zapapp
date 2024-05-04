@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Tu Zapatería: Sobre la Web</title>
+    <th:block th:replace="~{fragments/general.html :: headerfiles}"></th:block>
+</head>
+
+<body>
+    <div>
+        <div th:replace="~{fragments/general.html :: navigation}"> </div>
+    
+        <div class="container">                
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <hr>
+                    <h5>Sobre esta WEBAPP</h5>
+                    <hr>
+                    <p>Aplicación Spring Web realizada para la 
+                        asignatura de Acceso a Datos del Ciclo de 
+                        Desarrollo de Aplicaciones Multiplataforma 
+                        - IES Virgen del Carmen (Jaén)</p>
+                </div>
+            </div>
+        </div>
+        <div th:replace="~{fragments/general.html :: footer}"> </div>
+    </div>
+</body>
+
+</html>

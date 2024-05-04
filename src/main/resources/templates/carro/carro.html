@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>Tu Zapatería: Comprar productos</title>
+  <th:block th:replace="~{fragments/general.html :: headerfiles}"></th:block>
+</head>
+
+<body>
+  
+    <div th:replace="~{fragments/general.html :: navigation}"> </div>
+
+    <div class="container">
+      <h3 class="h3 text-center">ZapAPP - Productos en la cesta</h3>
+      <div th:if="${lineapedidos != null}">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Descripción</th>
+                    <th>Precio(€)</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="lineaPedido : ${lineapedidos}">
+                    <td th:text="${lineaPedido.producto.nombre}"></td>
+                    <td th:text="${lineaPedido.producto.descripcion}"></td>
+                    <td th:text="${lineaPedido.producto.precio}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{'/carro/edit/' + ${lineaPedido.id}}">Modificar</a>&nbsp;
+                        <a class="btn btn-primary" th:href="@{'/carro/delete/' + ${lineaPedido.id}}">Eliminar</a>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="5">Total</th>
+                    <td th:text="|${total} €|"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+      <div class="container" th:if="${lineapedidos == null}">
+        <h3>La cesta está vacía.</h3>
+        <p>Añada productos</p>
+        <a href="/carro/productos" class="btn btn-primary">Ir a tienda</a>
+      </div>
+    </div>
+    <div th:replace="~{fragments/general.html :: footer}">
+</div>
+</body>
+
+</html>
